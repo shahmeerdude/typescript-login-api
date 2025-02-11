@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
-import { login } from './auth';
+import { register, login } from './auth';
 require('dotenv').config();
 
 const app = express();
@@ -8,6 +8,9 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+
+// Register route
+app.post('/register', register);
 
 // Login route
 app.post('/login', login);
